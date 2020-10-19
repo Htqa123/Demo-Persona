@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Inicio</title>
+        <meta charset="UTF-8"/>
+
+    </head>
+    <body>
+        <h1>Agregar Persona</h1>
+        
+        <a th:href="@{/}">Menu Principal</a>
+        <br/><br/>
+        <div th:if="${personas != null and !personas.empty}">
+            <form th:action="@{/gurdar}" method="post" th:object="${persona}">
+                <br/>
+                <label for="nombre">Nombre</label>
+                <input type="text" neme="nombre" th:field="*{nombre}"/>
+                <br/>
+                <label for="apellido">apellido</label>
+                <input type="text" neme="apellido" th:field="*{apellido}"/>
+                <br/>
+                <label for="email">Email</label>
+                <input type="email" neme="email" th:field="*{email}"/>
+                <br/>
+                <label for="telefono">Telefono</label>
+                <input type="tel" neme="telefono" th:field="*{telefono}"/>
+                <br/>
+                <input type="submit"  name="gurdar" value="Guardar"/>
+            </form>
+            <div th:if="${personas == null or personas.empty}">
+                !No hay registros¡
+            </div>
+        </div>
+    </body>
+</html>
